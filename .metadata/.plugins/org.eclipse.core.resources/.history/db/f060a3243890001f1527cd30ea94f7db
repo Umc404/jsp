@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+	<Appenders>
+		<Consloe name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d - %m%n" />
+		</Consloe>
+	</Appenders>
+	<Loggers>
+		<Root level="INFO">
+			<AppenderRef ref="console"/>
+		</Root>
+	
+	</Loggers>
+</Configuration>
