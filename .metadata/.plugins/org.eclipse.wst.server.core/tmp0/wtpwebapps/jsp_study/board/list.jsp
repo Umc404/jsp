@@ -29,5 +29,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<br>
+	<a href="../"><button type="button">맨 처음으로</button></a>
+	<a href="/brd/register"><button type="button">등록</button></a>
 </body>
 </html>

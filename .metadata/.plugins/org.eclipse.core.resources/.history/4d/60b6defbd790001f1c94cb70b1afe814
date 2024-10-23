@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Board Modify Page</title>
+</head>
+<body>
+	<h1>Board Detail Page</h1>
+	<form action="">
+		<p>${bvo.bno }</p>
+		<p>${bvo.title }</p>
+		<p>${bvo.writer }</p>
+		<p>작성일자 : ${bvo.regdate }(최근 수정일 : ${bvo.moddate })</p>
+		<p><b>내용</b> <br> ${bvo.content }</p>
+	
+	</form>
+	<!-- 수정버튼을 누르면 내가 수정한 내용을 가지고(form => submit) 컨트롤러로 이동 -->
+	<button type="submit">modify commit</button>
+	<!-- 리스트 버튼을 누르면 리스트페이지로 이동 -->
+	<a href="/brd/list"></a><button href="button">list</button></a>
+</body>
+</html>

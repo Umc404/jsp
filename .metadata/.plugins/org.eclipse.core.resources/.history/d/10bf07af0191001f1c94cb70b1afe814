@@ -1,0 +1,24 @@
+/**
+ * 
+ */
+console.log("board_detail.js in.");
+console.log(bnoVal);
+
+// 등록 post / button : cmtAddBtn
+// 등록 버튼을 누르면 작성자와 댓글 내용의 값을 객체로 생성 => controller로 전송
+document.getElementById('cmtAddBtn').addEventListener('click',()=> {
+	let cmtText = document.getElementById("cmtText").value;
+	let cmtWriter = document.getElementById("cmtWriter").value;
+	if(cmtText ==null || cntText == ''){
+		alert("댓글을 입력해주세요.");
+		return false;
+	}	
+	let cmtData = {}
+})
+
+function consoleCont() {
+	
+	console.log(writer);
+	console.log(text);
+
+}

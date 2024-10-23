@@ -41,7 +41,10 @@ public class BoardVO {
 		this.regdate = regdate;
 		this.moddate = moddate;
 	}
-
+	// delete : bno
+	public BoardVO(int bno) {
+		this.bno = bno;
+	}
 	@Override
 	public String toString() {
 		return "제목 : " + title + "\n작성자 : " + writer +  "\t작성 날짜 : " + regdate+"(최근수정일 : " + moddate + ")"

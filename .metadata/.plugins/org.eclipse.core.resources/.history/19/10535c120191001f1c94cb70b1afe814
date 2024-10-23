@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+console.log("board_detail.js in.");
+console.log(bnoVal);
+
+// 등록 post / button : cmtAddBtn
+
+function consoleCont() {
+	let writer = document.getElementById("cmtWriter").value;
+	let text = document.getElementById("cmtText").value;
+	
+	console.log(writer);
+	console.log(text);
+
+}
