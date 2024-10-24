@@ -7,8 +7,9 @@
 <title>Board Modify Page</title>
 </head>
 <body>
-	<h1>Board Detail Page</h1>
-	<form action="/brd/update" method="post">
+	<h1>Board Modify Page</h1>
+	<img alt="" src="/_fileUpload/${bvo.imageFile }" >
+	<form action="/brd/update" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="bno" value="${bvo.bno }">
 		<table>
 			<tr>
@@ -34,6 +35,13 @@
 			<tr>
 				<th>content</th>
 				<td><textarea rows="10" cols="50" name="content" placeholder="내용을 입력하세요.">${bvo.content }</textarea></td>
+			</tr>
+			<!-- 파일 변경 -->
+			<tr>
+				<th>imageFile</th>
+				<td>
+				<input type="hidden" name="imageFile" value="${bvo.imageFile }">
+				<input type="file" name="newFile" accept="image/jpg, image/gif, image/jpeg, image/png"></td>
 			</tr>
 		</table>
 	<button type="submit">modify commit</button>

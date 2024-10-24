@@ -52,16 +52,25 @@ public class BoardDAOImpl implements BoardDAO {
 	public int update(BoardVO bvo) {
 		log.info(">>>> update DAO in");
 		int isOk = sql.update("BoardMapper.up",bvo);
-		if(isOk>0) {sql.commit(); }
-		return 0;
+		if(isOk>0) sql.commit();
+		return isOk;
 	}
 
 	@Override
 	public int delete(BoardVO bvo) {
 		log.info(">>>> delete DAO in");
 		int isOk = sql.delete("BoardMapper.del",bvo);
-		if(isOk>0) {sql.commit(); }
-		return 0;
+		if(isOk>0) sql.commit();
+		return isOk;
 	}
+
+	@Override
+	public int readCount(int bno) {
+		// TODO Auto-generated method stub
+		int isOk = sql.update("BoardMapper.read", bno);
+		if(isOk>0) sql.commit();
+		return isOk;
+	}
+
 	
 }

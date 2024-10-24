@@ -7,6 +7,8 @@ public class BoardVO {
 	private String content;
 	private String regdate;
 	private String moddate;
+	private int readCount;
+	private String imageFile;
 	
 	public BoardVO() {}
 
@@ -18,11 +20,12 @@ public class BoardVO {
 	}
 
 	// list : bno, title, writer, moddate
-	public BoardVO(int bno, String title, String writer, String moddate) {
+	public BoardVO(int bno, String title, String writer, String moddate, int readCount) {
 		this.bno = bno;
 		this.title = title;
 		this.writer = writer;
 		this.moddate = moddate;
+		this.readCount = readCount;
 	}
 
 	// update : bno, title, content
@@ -33,22 +36,25 @@ public class BoardVO {
 	}
 
 	// detail : all
-	public BoardVO(int bno, String title, String writer, String content, String regdate, String moddate) {
+	public BoardVO(int bno, String title, String writer, String content, String regdate, String moddate, int readCount, String imageFile) {
 		this.bno = bno;
 		this.title = title;
 		this.writer = writer;
 		this.content = content;
 		this.regdate = regdate;
 		this.moddate = moddate;
+		this.readCount = readCount;
+		this.imageFile = imageFile;
 	}
 	// delete : bno
 	public BoardVO(int bno) {
 		this.bno = bno;
 	}
+
 	@Override
 	public String toString() {
-		return "제목 : " + title + "\n작성자 : " + writer +  "\t작성 날짜 : " + regdate+"(최근수정일 : " + moddate + ")"
-				+ "내용\n" + content ;
+		return "BoardVO [bno=" + bno + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regdate="
+				+ regdate + ", moddate=" + moddate + ", readCount=" + readCount + ", imageFile=" + imageFile + "]";
 	}
 
 	// getter / setter
@@ -98,6 +104,22 @@ public class BoardVO {
 
 	public void setModdate(String moddate) {
 		this.moddate = moddate;
+	}
+
+	public int getReadCount() {
+		return readCount;
+	}
+
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
+	}
+
+	public String getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(String imageFile) {
+		this.imageFile = imageFile;
 	}
 	
 }

@@ -12,7 +12,8 @@ document.getElementById('cmtAddBtn').addEventListener('click',()=> {
 	if(cmtText ==null || cmtText == ''){
 		alert("댓글을 입력해주세요.");
 		return false;
-	}	
+	}
+	// 댓글 객체 생성	
 	let cmtData = {
 		bno : bnoVal,
 		writer : cmtWriter,
@@ -24,15 +25,19 @@ document.getElementById('cmtAddBtn').addEventListener('click',()=> {
 		if(result == '1'){
 			alert("댓글 등록 성공.");
 		} else {
-			alert("댓글 등록 실패");
+			alert("댓글 등록 실패.");
 		}
+		
+		// 댓글 입력 후 다른 댓글 입력할 수 있도록 공백처리
 		document.getElementById("cmtText").value = "";
 		document.getElementById("cmtWriter").value = "";
+		
 		// 댓글 출력
 		printList(bnoVal);
 	});
 });
 
+// result.length : 댓글 유무 확인하여 없을 경우 comment가 없습니다. 출력
 function printList(bnoVal) {
 	getCommentListFromServer(bnoVal).then(result =>{
 		console.log(result);
@@ -45,6 +50,7 @@ function printList(bnoVal) {
 	})
 }
 
+// 값이 있을 경우 해당함수 호출하여 실행
 function printCommentList(result) {
 	let div = document.getElementById('commentLine');
 	div.innerText='';	// 기존에 값이 있다면 구조 지우기
@@ -96,6 +102,7 @@ async function getCommentListFromServer(bno) {
 	}
 };
 
+// update comment
 async function updateCommentToServer(cmtData) {
 	// 수정 : cno, content 객체를 보내서 isOk return => post
 	try{
@@ -113,46 +120,69 @@ async function updateCommentToServer(cmtData) {
 	} catch(error) {
 		console.log(error);
 	}
-	
 }
 
-
+// delete comment
+async function removeCommentToServer(cnoVal) {
+	try {
+			const resp = await fetch("/cmt/remove?cno="+cnoVal);
+			const result = await resp.text();
+			return result;
+		} catch(error){
+			console.log(error);
+		}
+}
+	
 document.addEventListener('click',(e)=> {
 	console.log(e.target);
 	console.log(e.target.dataset.cno);
 	
-	// 수정
-	if(e.target.classList.contains('cmtModBtn')){
-		// 수정에 대한 처리
-		let cnoVal = e.target.dataset.cno;
-		// cno 값을 id로 사용할 경우
-		let cmtText = document.getElementById(cnoVal).value;
-		console.log(cmtText);
-		
-		
-		let cmtData = {
-			cno : cnoVal,
-			content : cmtText,
+	// 수정		
+		if(e.target.classList.contains('cmtModBtn')) {
+			// 수정에 대한 처리
+			let cnoVal = e.target.dataset.cno;
+			// cno 값을 id로 사용할 경우
+			let cmtText = document.getElementById(cnoVal).value;
+			console.log(cmtText);
+			
+			let cmtData = {
+				cno : cnoVal,
+				content : cmtText,
+			}
+
+			updateCommentToServer(cmtData).then(result => {
+				console.log(result);
+				if(result == '1'){
+					alert("댓글 수정 성공.");
+				} else {
+					alert("댓글 수정 실패.");
+				}
+				printList(bnoVal);
+			});
 		}
-		
-		updateCommentToServer(cmtData).then(result => {
-			console.log(result);
-		})
-		// 내 타겟을 기준으로 가장 가까운 div를 찾기 closest('div')
+	
+	// 내 타겟을 기준으로 가장 가까운 div를 찾기 closest('div')
 	//	let div = e.target.closest('div');
 	//	console.log(div);
 	//	let cmtText2 = div.querySelector('.cmtText').value;
 	//	console.log(cmtText2);
-	}
-	
 	
 	// 삭제
 	if(e.target.classList.contains('cmtDelBtn')){
 		// 삭제에 대한 처리
 		let cnoVal = e.target.dataset.cno;
+		// 삭제 비동기함수 호출
+		removeCommentToServer(cnoVal).then(result => {
+			// 삭제 후 출력 메서드 호출
+			if(result == '1') {
+				alert("댓글 삭제 성공.");
+			} else {
+				alert("댓글 삭제 실패.");
+			}
+			printList(bnoVal);
+		})
 	}
 })
-
 
 
 

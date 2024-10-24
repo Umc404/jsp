@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1>Board Detail Page</h1>
+		<img alt="" src="/_fileUpload/${bvo.imageFile }" >
 <table>
 	<tr>
 		<th>No.</th>
@@ -34,7 +35,10 @@
 		<th>content</th>
 		<td>${bvo.content }</td>
 	</tr>
-	
+	<tr>
+		<th>readCount</th>
+		<td>${bvo.readCount }</td>
+	</tr>
 </table>
 	
 	<a href="/brd/modify?bno=${bvo.bno }"><button type="button">수정</button></a>

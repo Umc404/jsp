@@ -10,8 +10,9 @@
   
   <!-- 실제 SQL 구문사용 -->
   <insert id="add" parameterType="domain.BoardVO">
-	insert into board(title, writer, content)
-	values(#{title}, #{writer}, #{content})  
+  <!-- imageFile 추가 -->
+	insert into board(title, writer, content, imageFile)
+	values(#{title}, #{writer}, #{content}, #{imageFile})  
   </insert>
   
   <select id="list" resultType="domain.BoardVO">
@@ -21,10 +22,16 @@
   <select id="detail" parameterType="int" resultType="domain.BoardVO">
    select * from board where bno = #{bno}
   </select>
+ 
+ 
+  <update id="read">
+  update board set readCount = readCount +1
+  where bno = #{bno}
+  </update>
   
   <update id="up" parameterType="domain.BoardVO">
   update board
-  set title = #{title}, content = #{content}, moddate = now()
+  set title = #{title}, content = #{content}, moddate = now(), imageFile = #{imageFile}
   where bno = #{bno}
   </update>
   

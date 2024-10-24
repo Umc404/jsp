@@ -84,6 +84,5 @@ public class CommentVO {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-	
-	
+
 }
