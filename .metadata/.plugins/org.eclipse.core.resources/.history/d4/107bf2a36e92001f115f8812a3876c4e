@@ -1,0 +1,11 @@
+package service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import dao.BoardDAOImpl;
+import dao.MemberDAO;
+
+public class MemberDAOImpl implements MemberDAO {
+	private static final Logger log = LoggerFactory.getLogger(BoardDAOImpl.class);
+}

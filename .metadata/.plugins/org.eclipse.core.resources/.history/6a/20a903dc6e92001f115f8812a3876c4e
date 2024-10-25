@@ -1,0 +1,13 @@
+package service;
+
+import dao.CommentDAOImpl;
+import dao.MemberDAO;
+import dao.MemberDAOImpl;
+
+public class MemberServiceImpl implements MemberService {
+	private MemberDAO mdao;
+	
+	public MemberServiceImpl() {
+		mdao = new MemberDAOImpl();
+	}
+}

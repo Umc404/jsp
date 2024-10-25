@@ -150,7 +150,7 @@ public class BoardController extends HttpServlet {
 				log.info(">>>> bvo insert "+(isOk>0?"성공":"실패"));
 				
 				// 처리 후 목적지
-				destPage = "/index.jsp";
+				destPage = "/list.jsp";
 				
 			} catch (Exception e) {
 				System.out.println("insert error");

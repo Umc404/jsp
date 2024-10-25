@@ -20,3 +20,14 @@ create table comment (
  regdate datetime default now(),
  primary key(cno)
 );
+
+-- 2024-10-25
+create table member(
+id varchar(100) pk not null,
+pwd varchar(100) not null,
+email varchar(200) not null,
+phone varchar(50),
+regdate datetime default now(),
+lastlogin datetime default now(),
+primary key(id)
+);

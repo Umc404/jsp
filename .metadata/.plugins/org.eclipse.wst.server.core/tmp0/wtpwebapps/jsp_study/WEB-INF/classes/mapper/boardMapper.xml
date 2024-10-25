@@ -38,4 +38,11 @@
   <delete id="del" parameterType="domain.BoardVO">
   delete from board where bno = #{bno}
   </delete>
+  
+  <select id="mylist" resultType="domain.BoardVO">
+  select * from board where writer = #{id}
+  </select>
+  
+  
+  
   </mapper>

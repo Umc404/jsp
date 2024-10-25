@@ -18,4 +18,6 @@ public interface BoardDAO {
 
 	int readCount(int bno);
 
+	List<BoardVO> myList(String id);
+
 }

@@ -72,5 +72,11 @@ public class BoardDAOImpl implements BoardDAO {
 		return isOk;
 	}
 
+	@Override
+	public List<BoardVO> myList(String id) {
+		log.info(">>>> myList DAO in.");
+		return sql.selectList("BoardMapper.mylist",id);
+	}
+
 	
 }
